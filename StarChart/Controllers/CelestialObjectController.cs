@@ -86,7 +86,7 @@ namespace StarChart.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var celestialObjects = _context.CelestialObjects.Where(x => x.Name == name).ToList();
+            var celestialObjects = _context.CelestialObjects.Where(x => x.Id == id || x.OrbitedObjectId==id).ToList();
             if (!celestialObjects.Any())
                 return NotFound();
             _context.CelestialObjects.RemoveRange(celestialObjects);
